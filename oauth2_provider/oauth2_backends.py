@@ -83,6 +83,8 @@ class OAuthLibCore(object):
         :param request: The current django.http.HttpRequest object
         :return: provided POST parameters
         """
+        if request.content_type == 'application/json':
+            return json.loads(request.body)
         return request.POST.items()
 
     def validate_authorization_request(self, request):
