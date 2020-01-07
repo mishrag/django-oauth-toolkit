@@ -84,7 +84,7 @@ class OAuthLibCore(object):
         :return: provided POST parameters
         """
         if request.content_type == 'application/json':
-            return json.loads(request.body)
+            return json.loads(request.body).items()
         return request.POST.items()
 
     def validate_authorization_request(self, request):
